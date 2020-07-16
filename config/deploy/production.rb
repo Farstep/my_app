@@ -60,4 +60,12 @@
 #     # password: "please use keys"
 #   }
 
-server '54.150.141.219', user: 'ec2-user', roles: %w{app web db}
+server '54.150.141.219',
+   user: "ec2-user",
+   roles: %w{web db app},
+   ssh_options: {
+       port: 22,
+       user: "ec2-user",
+       keys: %w(~/.ssh/practice-aws.pem),
+       forward_agent: true
+   }
